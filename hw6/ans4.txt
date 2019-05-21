@@ -1,0 +1,9 @@
+Book_A finding cost at stack: 1, at queue: 1
+Book_B finding cost at stack: 1, at queue: 1
+Book_A not found
+Book_D finding cost at stack: 2, at queue: 2
+Book_C finding cost at stack: 1, at queue: 1
+Book_E finding cost at stack: 1, at queue: 1
+Book_E finding cost at stack: 2, at queue: 1
+Book_E finding cost at stack: 2, at queue: 1
+Book_F finding cost at stack: 1, at queue: 1

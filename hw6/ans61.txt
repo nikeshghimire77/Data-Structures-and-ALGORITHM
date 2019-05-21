@@ -1,0 +1,4 @@
+Book_A finding cost at stack: 5, at queue: 1
+Book_D finding cost at stack: 3, at queue: 3
+Book_A not found
+Book_E finding cost at stack: 1, at queue: 1

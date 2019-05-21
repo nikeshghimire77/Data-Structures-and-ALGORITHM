@@ -1,0 +1,4 @@
+ Book_Afinding cost at stack: 5, at queue: 1
+ Book_Dfinding cost at stack: 3, at queue: 3
+ Book_A not found
+ Book_Efinding cost at stack: 1, at queue: 1

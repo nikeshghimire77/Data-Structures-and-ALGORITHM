@@ -1,0 +1,4 @@
+sort salary
+add after 1
+31230 Donald Trump 12 01 1945 20 1000000 President
+delete 2 to 3

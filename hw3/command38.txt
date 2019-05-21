@@ -1,0 +1,2 @@
+sort DOB
+delete 0 to 3

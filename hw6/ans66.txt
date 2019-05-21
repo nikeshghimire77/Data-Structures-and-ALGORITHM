@@ -1,0 +1,4 @@
+buy rules not found
+sale rules finding cost at stack: 1, at queue: 1
+buy sale rules not found
+sale buy rules finding cost at stack: 3, at queue: 3

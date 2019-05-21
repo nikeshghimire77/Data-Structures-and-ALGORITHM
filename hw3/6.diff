@@ -1,0 +1,15 @@
+--- ans36.txt	2018-10-10 22:13:52.532256018 -0500
++++ output36.txt	2018-10-10 22:15:10.537312869 -0500
+@@ -1,11 +0,0 @@
+-10002 Darlene Daniel 02 14 2001 1 86752 Developer
+-10007 Guillermo Dunn 06 21 1998 5 78865 Cook
+-10001 Anna Lawson 01 14 1956 23 1000001 Janitor
+-10003 Marco Rios 07 12 1977 3 49123 Maintenance
+-10009 Harvey Willis 08 13 1995 11 132311 Dentist 
+-
+-10001 Anna Lawson 01 14 1956 23 1000001 Janitor
+-10003 Marco Rios 07 12 1977 3 49123 Maintenance
+-10009 Harvey Willis 08 13 1995 11 132311 Dentist 
+-10007 Guillermo Dunn 06 21 1998 5 78865 Cook
+-10002 Darlene Daniel 02 14 2001 1 86752 Developer
+\ No newline at end of file

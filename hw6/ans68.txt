@@ -1,0 +1,2 @@
+buy not found
+sale finding cost at stack: 2, at queue: 1

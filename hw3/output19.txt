@@ -1,0 +1,15 @@
+51249 Harvey Byrd 11 11 1911 10 2000000 CEO
+23192 Cheryl Abbott 10 31 1990 2 12000 Clown
+49512 Karl Walsh 07 26 1979 10 481822 Manager
+10559 Mike Gutierrez 02 19 1964 15 125821 Developer
+42145 Bill Gates 10 28 1955 10 2000000 CEO
+84125 Matt Scott 04 31 1984 2 24000 Janitor
+92412 Nouhad Rizk 02 26 1974 20 84349 Proffesor
+36512 Travis Wells 05 21 1968 15 125821 Doctor
+12345 Jennifer Herrera 01 14 1991 2 50000 Teacher
+12346 Gordan Ramsey 02 09 1992 10 40000 Janitor
+12347 Leslie Brett 03 14 1993 2 50000 Receptionist
+12348 Else Sevil 04 09 1994 1 20000 TA
+12349 Elvira Seneca 05 14 1995 2 50000 Nurse
+12350 Pinchas Oliwer 06 09 1996 10 30000 Cashier
+

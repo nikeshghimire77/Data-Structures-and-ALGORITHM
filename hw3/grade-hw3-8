@@ -1,0 +1,254 @@
+#!/bin/bash
+# Copyright (C) 2013-2016 Yiqun Zhang <zhangyiqun9164@gmail.com>
+# Cotrik(Kaoji) Xu <cotrikxu@gmail.com>
+# All Rights Reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# color constants
+green="\033[1;92m"
+red="\033[1;91m"
+yellow="\033[1;93m"
+nocolor="\033[0m"
+hwnumber="3"
+# this is the root path of the course directory.
+cpath="/home/y2018/fall/cs2430/8"
+#cpath="/home/y2018/fall/cs2430/ta/cosc3300/student"
+# TA folder path
+ta="/home/y2018/fall/cs2430/ta/cosc3300/answer/hw${hwnumber}"
+# This postfix will be appended to each student's home directory
+# in case the submissions are archived into some sub-directories.
+postfix="hw${hwnumber}-late2"
+# main program name
+filename="database"
+hw="hw${hwnumber}"
+# number of test cases
+casecount=9
+# maximum time allowed for each run
+timeout="2s"
+#       0   1  2  3  4  5  6  7  8  9 10
+weight=(0  10 10 10 10 10 10 10 10 10)
+baseGrade=10
+
+# print help information
+function help() {
+    echo "Usage:"
+    printf "%-40s %s\n" "grade help"                      "show this help message"
+    printf "%-40s %s\n" "grade exec \"[command]\""        "execute [command] in every student's directory"
+    printf "%-40s %s\n" "grade compile"                   "compile students' submission"
+    printf "%-40s %s\n" "grade run"                       "run students' programs with test cases and compare"
+    printf "%-40s %s\n" "grade clean"                     "clean up students' directories"
+    printf "%-40s %s\n" "grade show [grade|ignore|diff]"  "show grade, ignore directory list or file diffs"
+    printf "%-40s %s\n" "grade fail [name]"               "directly assign fail to a student"
+    printf "%-40s %s\n" "grade resetowner"                "re-assign ownership to studnets' directory。"
+    printf "%-40s %s\n" "grade archive [name]"            "archive students' files."
+    printf "%-40s %s\n" "grade lock [on|off]"             "lock students' directories."
+    printf "%-40s %s\n" "grade distribute [filename]"     "distribute files"
+}
+
+# clean up students' directories.
+function clean() {
+    if [ $# -ne 0 ]; then 
+        help;
+        exit;
+    fi
+    cd $cpath
+    for dir in `ls -d */`; do  # list all dirs under the cpath folder
+        if ! [ -e $dir.ignore ]; then
+            echo -e "    Cleaning $yellow$dir$postfix$nocolor"
+            pushd $dir$postfix > /dev/null
+	    # delete all the existing output files
+            rm -f COMPILE.err GRADE TIMEOUT *.out *.diff *.selfcheck.* *.stderr *.stdout $filename 2>/dev/null
+            popd > /dev/null
+        fi
+    done
+}
+
+# compile students' programs
+function compile() {
+    if [ $# -ne 0 ]; then 
+        help;
+        exit;
+    fi
+    echo -e "Program name is $yellow$filename$nocolor."
+    echo -e "Begin to compile code in each sub-directory under $yellow$cpath$nocolor."
+    cd $cpath
+    for dir in `ls -d */`; do  # for each folder
+        if ! [ -e $dir.ignore ]; then  # if don't want to skip this folder
+            echo -e "Compiling in $yellow$dir$postfix$nocolor"
+            pushd $dir$postfix > /dev/null
+            g++ -std=c++11 *.cpp -o $filename 2>COMPILE.err
+            if [ $? -ne 0 ]; then # $? means execution result from last command, here means have error from g++ command
+                echo -e "    ${red}Compilation had an error.$nocolor"
+                echo "0" > GRADE
+            else
+                rm -f COMPILE.err
+            fi
+            popd > /dev/null
+        fi
+    done
+}
+
+function run() {
+    if [ $# -ne 0 ]; then 
+        help;
+        exit;
+    fi
+    echo -e "Program name is $yellow$filename$nocolor."
+    echo "Begin to run $yellow$filename$nocolor in each sub-directory under $yellow$cpath$nocolor."
+    cd $cpath
+    gradeStats=()
+    for casenum in `seq 1 1 $casecount`; do
+        gradeStats[$casenum]=0
+    done
+    for dir in `ls -d */`; do
+        if ! [ -e $dir.ignore ]; then
+            echo -e "Running in $yellow$dir$postfix$nocolor"
+            pushd $dir$postfix > /dev/null
+            if ! [ -e GRADE ]; then
+                grade=$baseGrade
+                for casenum in `seq 1 1 $casecount`; do # create case number
+                    echo -e "    ${yellow}Test case $casenum$nocolor"
+                    # equi-width version of case number
+                    #casenumw=`printf "%02d" $casenum`  # because here are only 9 test case, this command is unnecessary
+                    casenumw=$casenum
+                    timeout -k $timeout $timeout ./$filename input=input${hwnumber}${casenumw}.txt output=output${hwnumber}${casenumw}.txt command=command${hwnumber}$casenumw.txt #  1>$casenumw.stdout 2>$casenumw.stderr 
+                    if [ $? -ne 0 ]; then
+                        echo -e "        ${red}Program killed due to timeout ($timeout).$nocolor"
+                        echo "Test case $casenum timed out ($timeout)." >> TIMEOUT
+                    fi
+                    # remove comments
+                    #sed -i "/^#.*$/d" $casenumw.out
+                    diff -iEBwu ans${hwnumber}${casenumw}.txt output${hwnumber}$casenumw.txt > $casenumw.diff
+                    if [ $? -ne 0 ]; then   # record all error testcase
+                        echo -e "        ${red}FAILED$nocolor."
+                        let gradeStats[$casenum]=gradeStats[$casenum]+1
+                    else
+                        echo -e "        ${green}PASSED$nocolor."
+                        rm -f $casenumw.diff
+                        let grade=grade+weight[$casenum]
+                    fi
+                done
+                echo $grade > GRADE
+                echo -e "    ${green}Overall grade is $grade$nocolor"
+            else
+                echo -e "        ${yellow}This directory is already graded.$nocolor"
+            fi
+            popd > /dev/null
+        fi
+    done
+    report="$ta/REPORT"
+    echo "Grade report case by case:" > $report
+    printf "%9s  %4s\n" "test case" "fail" >> $report
+    for casenum in `seq 1 1 $casecount`; do
+        printf "%9s  %4s\n" "$casenum" "${gradeStats[$casenum]}" >> $report
+    done
+    cat $report
+}
+
+
+function show() {
+    if [ $# -ne 1 ]; then 
+        help;
+        exit;
+    fi
+    cd $cpath
+    if [ $1 == "ignore" ]; then
+        echo "Ignored directories are:"
+        for dir in `ls -d */`; do
+            if [ -e $dir.ignore ]; then
+                echo -e "    $dir"
+            fi
+        done
+    elif [ $1 == "bonus" ]; then
+        echo "Directories having the .bonus flag are:"
+        for dir in `ls -d */`; do
+            if [ -e $dir.bonus ]; then
+                echo -e "    $dir"
+            fi
+        done
+    elif [ $1 == "grade" ]; then
+        for dir in `ls -d */`; do
+            if ! [ -e $dir.ignore ]; then
+                if [ -e $dir$postfix/GRADE ]; then
+                    printf "%20s %10s\n" $dir $(cat $dir$postfix/GRADE)
+                else
+                    echo -e "$yellow$dir$nocolor is not graded."
+                fi
+            fi
+        done
+    elif [ $1 == "diff" ]; then
+        for dfile in `find $cpath -name "*.diff" 2>/dev/null`; do
+            echo "----------$dfile-----------"
+            head $dfile
+        done
+    elif [ $1 == "report" ]; then
+        if ! [ -e $ta/REPORT ]; then
+            echo "No report found."
+        else
+            cat $ta/REPORT
+        fi
+    fi
+}
+
+
+# execute a command in every student's directory.
+function exec() {
+    if [ $# -ne 1 ]; then
+        help;
+        exit;
+    fi
+    cd $cpath
+    for dir in `ls -d */`; do  # list all the folder
+        if ! [ -e $dir.ignore ]; then # didn't have a file named dir.ignore, execute this command
+            echo -e "    Executing $yellow$1$nocolor in $yellow$dir$postfix$nocolor"
+            pushd $dir$postfix > /dev/null # change folder and doesn't export and message
+            $1 # execute command
+            popd > /dev/null # back to original folder
+        fi
+    done
+}
+
+
+function archive() {
+    if [ $# -ne 1 ]; then
+        help;
+        exit;
+    fi
+    cd $cpath
+    for dir in `ls -d */`; do
+        if ! [ -e $dir.ignore ]; then
+            pushd $dir > /dev/null
+            echo -e "${yellow}Archiving in $dir$postfix...$nocolor"
+            mkdir $1
+            for f in `find $hw/ -type f -not -name ".*" -not -path "./hw*"`; do
+                cp $f $1
+            done
+            #chown -R cxu:cs2430ta $1
+	    #chown -R kzhang29:%nsm $1
+	    #chown -R cs2729:cs24302ta $1
+            chown -R cs3300 $1
+            chmod -R u=rwX,g=rwX,o=rX $1
+            popd > /dev/null
+        fi
+    done
+}
+
+if [ $# -eq 1 ]; then
+    $1;
+elif [ $# -eq 2 ]; then
+    $1 "$2";
+else
+    help;
+fi

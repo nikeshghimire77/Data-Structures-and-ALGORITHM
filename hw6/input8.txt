@@ -1,0 +1,16 @@
+buy BookA
+buy BookB
+buy BookC
+buy BookD
+buy BookE
+buy BookF
+buy BookG
+sale BookD
+sale BookA
+buy BookX
+buy BookY
+buy BookZ
+sale fakebook
+sale BookY
+sale BookF
+sale BookZ

@@ -1,0 +1,12 @@
+Algorithms not found
+Algorithms to Live By: The Computer Science of Human Decisions finding cost at stack: 3, at queue: 3
+BookA finding cost at stack: 7, at queue: 3
+BookB finding cost at stack: 1, at queue: 1
+BookC finding cost at stack: 1, at queue: 1
+BookD finding cost at stack: 1, at queue: 1
+fakebook not found
+BookE finding cost at stack: 5, at queue: 1
+BookF finding cost at stack: 1, at queue: 1
+BookG finding cost at stack: 1, at queue: 1
+Structure and Interpretation of Computer Programs finding cost at stack: 2, at queue: 1
+Cracking the Coding Interview: 189 Programming Questions and Solutions finding cost at stack: 1, at queue: 1

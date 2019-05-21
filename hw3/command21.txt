@@ -1,0 +1,6 @@
+add before 0
+12345 Jennifer Herrera 01 14 1991 2 50000 Teacher
+add before 1
+12346 Gordan Ramsey 02 09 1992 10 40000 Janitor
+add before 5
+12347 Leslie Brett 03 14 1993 2 50000 Receptionist

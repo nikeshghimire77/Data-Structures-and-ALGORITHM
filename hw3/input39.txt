@@ -1,0 +1,2 @@
+49193 Donald Duck 11 23 1988 1 10000 Comedian
+38931 Sue Yoo 12 18 1985 2 13132 Lawyer

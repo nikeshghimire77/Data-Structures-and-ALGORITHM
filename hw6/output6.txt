@@ -1,0 +1,6 @@
+ Algorithmsfinding cost at stack: 2, at queue: 5
+ Data Miningfinding cost at stack: 3, at queue: 4
+ Mobile Computingfinding cost at stack: 4, at queue: 3
+ Databasesfinding cost at stack: 3, at queue: 2
+ Web Securityfinding cost at stack: 2, at queue: 2
+ Structured Programmingfinding cost at stack: 1, at queue: 1

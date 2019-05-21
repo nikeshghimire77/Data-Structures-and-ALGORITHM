@@ -1,0 +1,55 @@
+Line:10001 Anna Lawson 01 14 1956 23 1000001 Janitor
+Line:10002 Darlene Daniel 02 14 2001 1 86752 Developer
+Line:10003 Marco Rios 07 12 1977 3 49123 Maintenance
+Line:10004 Noel Walker 09 12 1987 1 1 CEO
+Line:10005 Sally Jackson 05 03 1988 5 223011 Accountant
+Line:10006 Winston Moran 05 15 1988 7 41412 Manager
+Line:10007 Guillermo Dunn 06 21 1998 5 78865 Cook
+Line:10008 May Marshall 07 12 1987 14 41231 Doctor
+Line:10009 Harvey Willis 08 13 1995 11 132311 Dentist
+Line:10010 Patti Haynes 12 25 2000 15 1337 Mascot
+Command: sort first name
+Command: add at beginning
+Record: 23192 Cheryl Abbott 10 31 1990 2 500000 Clown
+Command: delete 23192
+ID: 23192
+Temp ID:23192
+ID to find:23192
+10001 Anna Lawson 01 14 1956 23 1000001 Janitor
+10002 Darlene Daniel 02 14 2001 1 86752 Developer
+10007 Guillermo Dunn 06 21 1998 5 78865 Cook
+10009 Harvey Willis 08 13 1995 11 132311 Dentist
+10003 Marco Rios 07 12 1977 3 49123 Maintenance
+10008 May Marshall 07 12 1987 14 41231 Doctor
+10004 Noel Walker 09 12 1987 1 1 CEO
+10010 Patti Haynes 12 25 2000 15 1337 Mascot
+10005 Sally Jackson 05 03 1988 5 223011 Accountant
+10006 Winston Moran 05 15 1988 7 41412 Manager
+Command: delete 10007
+ID: 10007
+Temp ID:10001
+ID to find:10007
+Temp ID:10002
+ID to find:10007
+Temp ID:10007
+ID to find:10007
+10001 Anna Lawson 01 14 1956 23 1000001 Janitor
+10002 Darlene Daniel 02 14 2001 1 86752 Developer
+10009 Harvey Willis 08 13 1995 11 132311 Dentist
+10003 Marco Rios 07 12 1977 3 49123 Maintenance
+10008 May Marshall 07 12 1987 14 41231 Doctor
+10004 Noel Walker 09 12 1987 1 1 CEO
+10010 Patti Haynes 12 25 2000 15 1337 Mascot
+10005 Sally Jackson 05 03 1988 5 223011 Accountant
+10006 Winston Moran 05 15 1988 7 41412 Manager
+Command: delete 5 to 8
+10008
+10006
+10001 Anna Lawson 01 14 1956 23 1000001 Janitor
+10002 Darlene Daniel 02 14 2001 1 86752 Developer
+10009 Harvey Willis 08 13 1995 11 132311 Dentist
+10003 Marco Rios 07 12 1977 3 49123 Maintenance
+10008 May Marshall 07 12 1987 14 41231 Doctor
+Command: add at end
+Record: 23192 Cheryl Abbott 10 31 1990 2 500000 Clown
+10007 John Smith 01 01 2000 1 1000 Construction

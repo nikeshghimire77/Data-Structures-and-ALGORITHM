@@ -1,0 +1,4 @@
+delete at beginning
+delete at end
+add at end
+00010 Renu Khator 04 24 1966 10 1000000 President

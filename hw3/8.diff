@@ -1,0 +1,13 @@
+--- ans38.txt	2018-10-10 22:13:52.532256018 -0500
++++ output38.txt	2018-10-10 22:15:15.028316142 -0500
+@@ -1,7 +1,8 @@
+ 29321 Bob Builder 01 01 1900 113 20 Constructor
++23214 Harambe Isnotdead 05 27 1999 5 1 Gorilla
+ 84231 Greg Johnson 06 07 1977 10 82000 Manager
+ 84812 Chloe Bennet 10 05 1977 5 62000 Actress
+ 69523 Nicola Burns 10 07 1977 2 150000 Agent
+-23214 Harambe Isnotdead 05 27 1999 5 1 Gorilla
+ 
+-23214 Harambe Isnotdead 05 27 1999 5 1 Gorilla
++69523 Nicola Burns 10 07 1977 2 150000 Agent
++

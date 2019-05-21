@@ -1,0 +1,6 @@
+ BookDfinding cost at stack: 4, at queue: 4
+ BookAfinding cost at stack: 6, at queue: 4
+ fakebook not found
+ BookYfinding cost at stack: 7, at queue: 7
+ BookFfinding cost at stack: 5, at queue: 5
+ BookZfinding cost at stack: 6, at queue: 3

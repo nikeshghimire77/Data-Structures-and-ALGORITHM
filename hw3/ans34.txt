@@ -1,0 +1,4 @@
+00001 Bill Gates 08 10 1969 23 9231233 Advisor
+00004 Jeff Bezos 04 01 1964 35 150000 CEO
+00003 Larry Ellison 02 19 1964 26 178000 Lawyer
+00002 Larry Page 10 11 1987 12 1 Memer

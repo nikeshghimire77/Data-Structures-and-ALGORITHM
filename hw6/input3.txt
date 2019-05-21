@@ -1,0 +1,11 @@
+buy Mobile Computing
+buy Web Security
+buy Data Mining
+buy Databases
+buy Algorithms
+buy Structured Programming
+sale Intrusion Detection
+sale Web Security
+sale Network Security
+sale Mobile Computing
+sale Databases

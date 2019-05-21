@@ -1,0 +1,6 @@
+49193 Donald Duck 11 23 1988 1 10000 Comedian
+38931 Sue Yoo 12 18 1985 2 13132 Lawyer
+10008 May Marshall 07 12 1987 14 41231 Doctor
+10009 Harvey Willis 08 13 1995 11 132311 Dentist
+10010 Patti Haynes 12 25 2000 15 1337 Mascot
+

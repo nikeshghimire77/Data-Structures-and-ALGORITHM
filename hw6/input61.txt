@@ -1,0 +1,10 @@
+buy Book_A
+buy Book_B
+buy Book_C
+buy Book_D
+buy Book_E
+
+sale Book_A
+sale Book_D
+sale Book_A
+sale Book_E
